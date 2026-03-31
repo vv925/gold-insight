@@ -607,7 +607,20 @@ if mobile_mode:
         st.metric("卖出建议", sell_signal["sell_action"])
     with s2:
         st.metric("卖出范围", sell_signal["sell_target"])
-    st.metric("适用仓位", sell_signal["position_scope"])
+    st.markdown("**适用仓位：**")
+    st.markdown(
+        f"""
+        <div style="
+            font-size:14px;
+            padding:8px 10px;
+            border-radius:10px;
+            background-color:#1f2937;
+        ">
+            {sell_signal['position_scope']}
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
 else:
     s1, s2, s3 = st.columns(3)
     s1.metric("卖出建议", sell_signal["sell_action"])
